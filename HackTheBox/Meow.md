@@ -40,7 +40,7 @@ Comando Ejecutado:
 telnet 10.129.18.148
 ```
 
-![a](meow_2.png)
+![a](img/meow_2.png)
 
 La conexión fue exitosa, presentando una prompt de inicio de sesión (Meow login:).
 
@@ -48,6 +48,8 @@ La conexión fue exitosa, presentando una prompt de inicio de sesión (Meow logi
 Al no disponer de credenciales, se buscó la manera de entrar. A veces, por fallos de configuración, algunas cuentas importantes suelen dejarse sin contraseña, lo cual es un problema muy grave. Un atacante puede usar un diccionario de nombres típicos (como admin, administrator, root) e ir probándolos por fuerza bruta.
 
 Se introdujo el nombre de usuario: root (uno de los más comunes ). Se dejó el campo de contraseña vacío o se usó la credencial por defecto.
+
+![a](img/meow_3.png)
 
 Se consiguió entrar en el sistema. El intento de login con credenciales triviales (usuario root sin contraseña) fue exitoso, otorgando una shell de administrador (root@Meow:~#) directamente.
 
@@ -62,7 +64,10 @@ Comandos Ejecutados:
 ls
 cat flag.txt
 ```
+
 En el directorio /root se encontró el archivo flag.txt, y se obtuvo la flag de compromiso.
+
+![a](img/meow_4.png)
 
 ## V. Conclusión y Remedios
 ### 5.1. Impacto
