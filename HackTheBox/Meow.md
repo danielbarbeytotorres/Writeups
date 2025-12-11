@@ -39,6 +39,9 @@ Comando Ejecutado:
 ```bash
 telnet 10.129.18.148
 ```
+
+![a](meow_2.png)
+
 La conexión fue exitosa, presentando una prompt de inicio de sesión (Meow login:).
 
 ### 3.2. Abuso de Credenciales por Defecto (Acceso Root)
