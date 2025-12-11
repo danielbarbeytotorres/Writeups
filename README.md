@@ -1,2 +1,2 @@
 # Writeups
-Aquí subiré mis writeups, tanto de HTB como de THM.
+Aquí subiré mis writeups, tanto de HTB como de THM :)
