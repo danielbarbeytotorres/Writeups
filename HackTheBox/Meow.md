@@ -24,7 +24,9 @@ Comando Ejecutado:
 sudo nmap -sV 10.129.18.148
 ```
 
-Resultado Clave: El escaneo reveló que solamente el puerto 23/tcp se encontraba abierto, ejecutando el servicio Telnet (telnet Linux telnetd).
+![a](img/meow_1.png)
+
+Resultado: El escaneo reveló que solamente el puerto 23/tcp se encontraba abierto, ejecutando el servicio Telnet (telnet Linux telnetd).
 
 ## III. Proceso de Explotación
 
