@@ -20,7 +20,7 @@ Comando Ejecutado:
 sudo nmap -sV -v 10.10.10.245
 ```
 
-![a](cap_1.png)
+![a](img/cap_1.png)
 
 Resultado: El escaneo reportó tres puertos abiertos:
 - 21/tcp (FTP): Servicio vsFTPd 3.0.3.
@@ -30,24 +30,24 @@ Resultado: El escaneo reportó tres puertos abiertos:
 ### 2.2. Enumeración de Servicios
 FTP (Puerto 21): Se intentó el acceso mediante el usuario anonymous, pero el servidor rechazó la conexión (Login failed), indicando que el acceso anónimo está deshabilitado.
 
-![a](cap_2.png)
+![a](img/cap_2.png)
 
 HTTP (Puerto 80): Al acceder vía navegador, se presentó un "Security Dashboard". Este panel muestra información del sistema en tiempo real, como la configuración de red (ip config) y conexiones activas (netstat), lo que sugiere que la aplicación web tiene capacidad de ejecución de comandos del sistema.
 
-![a](cap_3.png)
+![a](img/cap_3.png)
 
 ## III. Análisis de Vulnerabilidades Web (IDOR)
 ### 3.1. Descubrimiento de Insecure Direct Object Reference (IDOR)
 Navegando por la sección "Security Snapshots", se observó que la aplicación permite descargar capturas de paquetes (.pcap). Al generar una nueva captura, la URL seguía el patrón /data/id, donde el id es un numérico incremental.
 
-![a](cap_4.png)
+![a](img/cap_4.png)
 
 Se identificó una vulnerabilidad de Referencia Directa a Objeto Insegura (IDOR). Al manipular la URL y cambiar el ID a 0 (/data/0), se pudo acceder a una captura de tráfico histórica, posiblemente generada por el administrador u otro usuario.
 
 ### 3.2. Análisis de Tráfico (PCAP)
 Se descargó el archivo 0.pcap y se analizó utilizando Wireshark. Al examinar el flujo de paquetes TCP, se encontraron credenciales enviadas en texto plano durante una sesión FTP anterior.
 
-![a](cap_5.png)
+![a](img/cap_5.png)
 
 Credenciales Extraídas:
 Usuario: nathan 
@@ -62,7 +62,7 @@ Comando Ejecutado:
 ssh nathan@10.10.10.245
 ```
 
-![a](cap_6.png)
+![a](img/cap_6.png)
 
 La autenticación fue exitosa. Se listó el directorio actual y se recuperó la flag de usuario (user.txt).
 
@@ -78,7 +78,7 @@ wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
 
 Se levantó un servidor HTTP con Python (python3 -m http.server).
 
-![a](cap_7.png)
+![a](img/cap_7.png)
 
 Se descargó linpeas.sh en la máquina atacante.
 
@@ -111,7 +111,7 @@ os.setuid(0)  #Cambia el UID del proceso actual a 0 (root).
 os.system("/bin/bash")  #Lanza una nueva shell. Como el proceso padre ya es root, la nueva shell hereda los privilegios.
 ```
 
-![a](cap_8.png)
+![a](img/cap_8.png)
 
 El comando se ejecutó exitosamente, otorgando una shell como root. Finalmente, se leyó la flag de administrador (root.txt) en el directorio /root.
 
